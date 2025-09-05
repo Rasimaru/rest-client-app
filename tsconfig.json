@@ -35,7 +35,7 @@
     "paths": {
       "@/*": ["src/*"]
     },
-    "types": ["node"]
+    "types": ["node", "jest"]
   },
   "include": ["jest.setup.ts", "next-env.d.ts", "src", "tests", ".next/types/**/*.ts"],
   "exclude": ["node_modules"]
