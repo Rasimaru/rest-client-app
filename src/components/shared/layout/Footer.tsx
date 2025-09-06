@@ -5,16 +5,15 @@ import Link from 'next/link';
 import { Github } from 'lucide-react';
 import RS_LOGO from 'public/rss-logo.svg';
 import { Button } from '@/components/ui/button';
-import { JSX } from 'react';
 import { FOOTER_LINKS } from '@/lib/constants';
 import { useTranslations } from 'next-intl';
 
-const Footer = (): JSX.Element => {
+const Footer = () => {
   const t = useTranslations('Footer');
 
   return (
-    <footer className="w-full border-t border-gray-200 dark:border-gray-700 bg-gray-300 dark:bg-gray-900">
-      <div className="container mx-auto py-3 flex flex-col sm:flex-row items-center justify-between gap-4">
+    <footer className="w-full border-t border-gray-200 dark:border-gray-700 bg-gray-100 dark:bg-gray-900">
+      <div className="container xl:w-7xl mx-auto p-2.5 flex flex-row items-center justify-between gap-4">
         <Button variant="default" size="icon" className="rounded-full" asChild>
           <Link
             href={FOOTER_LINKS.github}
