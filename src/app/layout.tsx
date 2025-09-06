@@ -2,6 +2,7 @@ import type { Metadata } from 'next';
 import '@/styles/globals.css';
 import { ReactNode } from 'react';
 import Providers from '@/components/shared/Providers';
+import Layout from '@/components/shared/layout/Layout';
 
 // eslint-disable-next-line react-refresh/only-export-components
 export const metadata: Metadata = {
@@ -14,7 +15,7 @@ const RootLayout = ({ children }: { children: ReactNode }) => {
     <html lang="en">
       <body>
         <Providers>
-          <div className="flex justify-center items-center h-full">{children}</div>
+          <Layout>{children}</Layout>
         </Providers>
       </body>
     </html>
