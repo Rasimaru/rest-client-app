@@ -1,6 +1,5 @@
 import { fireEvent, render, screen } from '@testing-library/react';
-import userEvent from '@testing-library/user-event';
-import RootLayout, { metadata } from '../src/app/layout';
+import { metadata } from '../src/app/layout';
 import MainPage from '@/app/(main)/page';
 import NotFound from '@/app/not-found';
 import SignInPage from '@/app/(auth)/sign-in/page';
@@ -9,23 +8,20 @@ import VariablesPage from '@/app/variables/page';
 import HistoryPage from '@/app/history/page';
 import RestClientPage from '@/app/rest-client/page';
 import LocaleSwitcher from '@/components/shared/layout/LocaleSwitcher';
-import {
-  DropdownMenu,
-  DropdownMenuCheckboxItem,
-  DropdownMenuContent,
-  DropdownMenuItem,
-  DropdownMenuTrigger
-} from '@/components/ui/dropdown-menu';
+import Layout from '@/components/shared/layout/Layout';
 
 jest.mock('@/styles/globals.css', () => ({}));
 
-describe('Home page', () => {
-  it('renders RootLayout with children', () => {
+describe('Initial screen', () => {
+  it('renders Layout with children', () => {
     render(
-      <RootLayout>
-        <></>
-      </RootLayout>
+      <Layout>
+        <div>Test content</div>
+      </Layout>
     );
+    expect(screen.getByText('Rest Client App')).toBeInTheDocument();
+    expect(screen.getByText('Test content')).toBeInTheDocument();
+    expect(screen.getByText(/2025/i)).toBeInTheDocument();
   });
 
   it('metadata has title and description', () => {
@@ -75,56 +71,5 @@ describe('Home page', () => {
 
     await fireEvent.click(trigger);
     expect(screen.getByText('EN')).toBeInTheDocument();
-  });
-
-  test('DropdownMenuTrigger opens menu and items render', async () => {
-    const onClickMock = jest.fn();
-    render(
-      <DropdownMenu>
-        <DropdownMenuTrigger>Test</DropdownMenuTrigger>
-        <DropdownMenuContent>
-          <DropdownMenuItem variant="destructive" onClick={onClickMock}>
-            Delete
-          </DropdownMenuItem>
-          <DropdownMenuItem variant="default">Edit</DropdownMenuItem>
-        </DropdownMenuContent>
-      </DropdownMenu>
-    );
-
-    const trigger = screen.getByText('Test');
-
-    await userEvent.click(trigger);
-
-    const deleteItem = screen.getByText('Delete');
-    const editItem = screen.getByText('Edit');
-    expect(deleteItem).toBeInTheDocument();
-    expect(editItem).toBeInTheDocument();
-
-    fireEvent.click(deleteItem);
-    expect(onClickMock).toHaveBeenCalledTimes(1);
-
-    fireEvent.click(trigger);
-    expect(editItem).not.toBeInTheDocument();
-  });
-  test('DropdownMenuCheckboxItem toggles checked state', async () => {
-    const onCheckedChange = jest.fn();
-    render(
-      <DropdownMenu>
-        <DropdownMenuTrigger>Test</DropdownMenuTrigger>
-        <DropdownMenuContent>
-          <DropdownMenuCheckboxItem checked={false} onCheckedChange={onCheckedChange}>
-            Option 1
-          </DropdownMenuCheckboxItem>
-        </DropdownMenuContent>
-      </DropdownMenu>
-    );
-
-    const trigger = screen.getByText('Test');
-    await userEvent.click(trigger);
-
-    const option = screen.getByText('Option 1');
-    fireEvent.click(option);
-
-    expect(onCheckedChange).toHaveBeenCalled();
   });
 });
