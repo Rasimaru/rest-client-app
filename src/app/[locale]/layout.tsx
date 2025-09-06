@@ -6,6 +6,7 @@ import Providers from '@/components/shared/Providers';
 import Layout from '@/components/shared/layout/Layout';
 import { routing } from '@/i18n/routing';
 import NotFound from '../not-found';
+import { Toaster } from '@/components/ui/sonner';
 
 // eslint-disable-next-line react-refresh/only-export-components
 export const metadata: Metadata = {
@@ -31,6 +32,7 @@ const RootLayout = async ({
         <NextIntlClientProvider>
           <Providers>
             <Layout>{children}</Layout>
+            <Toaster position="top-right" />
           </Providers>
         </NextIntlClientProvider>
       </body>
