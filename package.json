@@ -9,7 +9,7 @@
     "start": "next start",
     "lint": "eslint --ext .ts,.tsx",
     "lint:fix": "eslint --fix --ext .ts,.tsx",
-    "prepare": "husky",
+    "prepare": "npx husky",
     "format:fix": "prettier --write \"./src/**/*.{ts,tsx,json}\"",
     "test": "jest",
     "test:coverage": "jest --coverage"
