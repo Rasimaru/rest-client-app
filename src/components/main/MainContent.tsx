@@ -28,12 +28,12 @@ const MainContent = (): JSX.Element => {
           </Link>
         </Button>
         <Button variant="default" size="sm" asChild>
-          <Link href={ROUTES.client} aria-label="Go to history page">
+          <Link href={ROUTES.history} aria-label="Go to history page">
             History
           </Link>
         </Button>
         <Button variant="default" size="sm" asChild>
-          <Link href={ROUTES.client} aria-label="Go to variables page">
+          <Link href={ROUTES.variables} aria-label="Go to variables page">
             Variables
           </Link>
         </Button>

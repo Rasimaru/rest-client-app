@@ -21,7 +21,7 @@ const Header = (): JSX.Element => {
         </Link>
         <LocaleSwitcher />
         <div className="flex items-center gap-4">
-          <Button variant="ghost" size="sm" asChild>
+          <Button variant="secondary" size="sm" asChild>
             <Link href={ROUTES.signin} aria-label="Go to sign-in page">
               Sign In
             </Link>
