@@ -53,6 +53,13 @@ const eslintConfig = [
       react: { version: 'detect' }
     }
   },
+  // Disable warnings for shadcn/ui components: they export variants + component in one file
+  {
+    files: ['src/components/ui/**/*.{ts,tsx}'],
+    rules: {
+      'react-refresh/only-export-components': 'off'
+    }
+  },
   {
     ignores: ['.next/**', 'node_modules/**', 'dist/**', 'out/**', 'next-env.d.ts']
   }
