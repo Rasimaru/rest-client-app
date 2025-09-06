@@ -54,20 +54,28 @@ describe('Initial screen', () => {
   });
 
   it('renders SignIn Page', () => {
+<<<<<<< HEAD
     render(
       <NextIntlClientProvider locale="en" messages={messages}>
         <SignInPage />
       </NextIntlClientProvider>
     );
+=======
+    render(<SignInPage />);
+>>>>>>> 7986283 (feat(auth): implement sign-up form with validation (yup))
     expect(screen.getByText('Sign In')).toBeInTheDocument();
   });
 
   it('renders SignUp Page', () => {
+<<<<<<< HEAD
     render(
       <NextIntlClientProvider locale="en" messages={messages}>
         <SignUpPage />
       </NextIntlClientProvider>
     );
+=======
+    render(<SignUpPage />);
+>>>>>>> 7986283 (feat(auth): implement sign-up form with validation (yup))
     expect(screen.getByText('Sign Up')).toBeInTheDocument();
   });
 
