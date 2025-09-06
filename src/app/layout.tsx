@@ -1,18 +1,24 @@
 import type { Metadata } from 'next';
 import '@/styles/globals.css';
 import { ReactNode } from 'react';
+import Providers from '@/components/shared/Providers';
 
+// eslint-disable-next-line react-refresh/only-export-components
 export const metadata: Metadata = {
-  title: 'lorem',
-  description: 'lorem'
+  title: 'Rest Client App',
+  description: 'A simple REST client app with history and variables management'
 };
 
-export default function RootLayout({ children }: { children: ReactNode }) {
+const RootLayout = ({ children }: { children: ReactNode }) => {
   return (
     <html lang="en">
       <body>
-        <div className="flex justify-center items-center h-full">{children}</div>
+        <Providers>
+          <div className="flex justify-center items-center h-full">{children}</div>
+        </Providers>
       </body>
     </html>
   );
-}
+};
+
+export default RootLayout;
