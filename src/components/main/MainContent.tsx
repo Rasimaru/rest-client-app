@@ -1,13 +1,16 @@
 import Link from 'next/link';
+import { useTranslations } from 'next-intl';
 import { Button } from '../ui/button';
 import { ROUTES } from '@/lib/routes';
 import { JSX } from 'react';
 
 const MainContent = (): JSX.Element => {
+  const t = useTranslations('MainContent');
+
   return (
     <>
       <div className="flex flex-col gap-10 bg-white text-black px-20 py-10 rounded-md">
-        <h2>Welcome!</h2>
+        <h2>{t('title')}</h2>
         <div className="flex items-center gap-4">
           <Button variant="secondary" size="sm" asChild>
             <Link href={ROUTES.signin} aria-label="Go to sign-in page">

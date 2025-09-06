@@ -1,0 +1,31 @@
+{
+  "Header": {},
+  "MainContent": {
+    "title": "Добро пожаловать!"
+  },
+  "History": {
+    "title": "История"
+  },
+  "SignInPage": {
+    "title": "Войти"
+  },
+  "SignUpPage": {
+    "title": "Зарегистрироваться"
+  },
+  "RestClientPage": {
+    "title": "REST клиент"
+  },
+  "VariablesPage": {
+    "title": "Переменные"
+  },
+  "NotFound": {
+    "title": "Страница не найдена.",
+    "message": "Извините, мы не смогли найти страницу, которую вы ищете.",
+    "goHome": "Перейти на главную"
+  },
+  "language": {
+    "label": "Язык",
+    "ru": "Русский",
+    "en": "Английский"
+  }
+}
