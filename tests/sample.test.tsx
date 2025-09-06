@@ -1,14 +1,14 @@
 import { fireEvent, render, screen } from '@testing-library/react';
-import { metadata } from '../src/app/layout';
 import MainPage from '@/app/[locale]/(main)/page';
 import NotFound from '@/app/not-found';
-import SignInPage from '@/app/(auth)/sign-in/page';
-import SignUpPage from '@/app/(auth)/sign-up/page';
+import SignInPage from '@/app/[locale]/(auth)/sign-in/page';
+import SignUpPage from '@/app/[locale]/(auth)/sign-up/page';
 import VariablesPage from '@/app/[locale]/variables/page';
 import HistoryPage from '@/app/[locale]/history/page';
 import RestClientPage from '@/app/[locale]/rest-client/page';
 import LocaleSwitcher from '@/components/shared/layout/LocaleSwitcher';
 import Layout from '@/components/shared/layout/Layout';
+import { metadata } from '@/app/layout';
 
 jest.mock('@/styles/globals.css', () => ({}));
 

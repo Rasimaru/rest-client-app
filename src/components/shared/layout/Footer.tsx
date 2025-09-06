@@ -7,8 +7,11 @@ import RS_LOGO from 'public/rss-logo.svg';
 import { Button } from '@/components/ui/button';
 import { JSX } from 'react';
 import { FOOTER_LINKS } from '@/lib/constants';
+import { useTranslations } from 'next-intl';
 
 const Footer = (): JSX.Element => {
+  const t = useTranslations('Footer');
+
   return (
     <footer className="w-full border-t border-gray-200 dark:border-gray-700 bg-gray-300 dark:bg-gray-900">
       <div className="container mx-auto py-3 flex flex-col sm:flex-row items-center justify-between gap-4">
@@ -17,7 +20,7 @@ const Footer = (): JSX.Element => {
             href={FOOTER_LINKS.github}
             target="_blank"
             rel="noopener noreferrer"
-            aria-label="GitHub profile"
+            aria-label={t('githubLinkAriaLabel')}
             className="hover:opacity-80 transition-opacity"
           >
             <Github
@@ -32,10 +35,10 @@ const Footer = (): JSX.Element => {
             href={FOOTER_LINKS.school}
             target="_blank"
             rel="noopener noreferrer"
-            aria-label="RS School"
+            aria-label={t('schoolLinkAriaLabel')}
             className="hover:opacity-80 transition-opacity"
           >
-            <Image src={RS_LOGO} alt="School logo" width={36} height={36} />
+            <Image src={RS_LOGO} alt={t('schoolImgAlt')} width={36} height={36} />
           </Link>
         </Button>
       </div>

@@ -6,6 +6,7 @@ import { JSX } from 'react';
 
 const MainContent = (): JSX.Element => {
   const t = useTranslations('MainContent');
+  const buttonLabels = useTranslations('button');
 
   return (
     <>
@@ -13,31 +14,31 @@ const MainContent = (): JSX.Element => {
         <h2>{t('title')}</h2>
         <div className="flex items-center gap-4">
           <Button variant="secondary" size="sm" asChild>
-            <Link href={ROUTES.signin} aria-label="Go to sign-in page">
-              Sign In
+            <Link href={ROUTES.signin} aria-label={buttonLabels('signInAriaLabel')}>
+              {buttonLabels('signIn')}
             </Link>
           </Button>
           <Button variant="default" size="sm" asChild>
-            <Link href={ROUTES.signup} aria-label="Go to sign-up page">
-              Sign Up
+            <Link href={ROUTES.signup} aria-label={buttonLabels('signUpAriaLabel')}>
+              {buttonLabels('signUp')}
             </Link>
           </Button>
         </div>
       </div>
       <div className="flex gap-5 p-5 bg-white rounded-md">
         <Button variant="default" size="sm" asChild>
-          <Link href={ROUTES.client} aria-label="Go to rest-client page">
-            Rest Client
+          <Link href={ROUTES.client} aria-label={t('buttonRestClientAriaLabel')}>
+            {t('buttonRestClient')}
           </Link>
         </Button>
         <Button variant="default" size="sm" asChild>
-          <Link href={ROUTES.history} aria-label="Go to history page">
-            History
+          <Link href={ROUTES.history} aria-label={t('buttonHistoryAriaLabel')}>
+            {t('buttonHistory')}
           </Link>
         </Button>
         <Button variant="default" size="sm" asChild>
-          <Link href={ROUTES.variables} aria-label="Go to variables page">
-            Variables
+          <Link href={ROUTES.variables} aria-label={t('buttonVariablesAriaLabel')}>
+            {t('buttonVariables')}
           </Link>
         </Button>
       </div>

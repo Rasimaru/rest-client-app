@@ -1,3 +1,5 @@
+'use client';
+
 import { Button } from '@/components/ui/button';
 import {
   DropdownMenu,
@@ -5,21 +7,37 @@ import {
   DropdownMenuItem,
   DropdownMenuTrigger
 } from '@/components/ui/dropdown-menu';
-import { JSX } from 'react';
+import { useRouter, usePathname } from 'next/navigation';
+import { useTranslations } from 'next-intl';
+import { LOCALES } from '@/lib/constants';
 
-const LocaleSwitcher = (): JSX.Element => {
+export default function LocaleSwitcher() {
+  const router = useRouter();
+  const pathname = usePathname();
+  const t = useTranslations('language');
+
+  const switchLocale = (nextLocale: string) => {
+    const segments = pathname.split('/');
+    segments[1] = nextLocale;
+    const newPath = segments.join('/');
+
+    router.push(newPath);
+  };
+
   return (
     <DropdownMenu>
       <DropdownMenuTrigger asChild>
         <Button variant="outline" size="sm">
-          EN
+          {t('label')}
         </Button>
       </DropdownMenuTrigger>
       <DropdownMenuContent>
-        <DropdownMenuItem>EN</DropdownMenuItem>
-        <DropdownMenuItem>RU</DropdownMenuItem>
+        {LOCALES.map((loc) => (
+          <DropdownMenuItem key={loc} onClick={() => switchLocale(loc)}>
+            {loc.toUpperCase()}
+          </DropdownMenuItem>
+        ))}
       </DropdownMenuContent>
     </DropdownMenu>
   );
-};
-export default LocaleSwitcher;
+}
