@@ -1,0 +1,18 @@
+{
+  "Header": {
+    "home": "Home",
+    "about": "About"
+  },
+  "NotFound": {
+    "message": "The page you are looking for does not exist."
+  },
+  "metadata": {
+    "title": "Find Pokemon App",
+    "description": "A simple app to find and view details about Pokemon"
+  },
+  "language": {
+    "label": "Language",
+    "ru": "Русский",
+    "en": "English"
+  }
+}
