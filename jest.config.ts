@@ -49,7 +49,7 @@ const config: Config = {
 module.exports = async () => ({
   ...(await createJestConfig({
     testEnvironment: 'jsdom',
-    rootDir: 'tests'
+    rootDir: ''
   })()),
   transformIgnorePatterns: ['node_modules/(?!next-intl)/']
 });
