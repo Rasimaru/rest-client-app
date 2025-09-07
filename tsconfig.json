@@ -37,6 +37,6 @@
     },
     "types": ["node", "jest"]
   },
-  "include": ["jest.setup.ts", "next-env.d.ts", "src", "tests", ".next/types/**/*.ts"],
+  "include": ["jest.setup.ts", "next-env.d.ts", "src", "tests", ".next/types/**/*.ts", "global.ts"],
   "exclude": ["node_modules"]
 }
