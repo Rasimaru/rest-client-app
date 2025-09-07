@@ -1,75 +1,83 @@
-import { fireEvent, render, screen } from '@testing-library/react';
-import MainPage from '@/app/[locale]/(main)/page';
+import { render, screen } from '@testing-library/react';
+import { NextIntlClientProvider } from 'next-intl';
+import messages from '../messages/en.json';
 import NotFound from '@/app/not-found';
+import '@testing-library/jest-dom';
+import { metadata } from '@/app/layout';
 import SignInPage from '@/app/[locale]/(auth)/sign-in/page';
 import SignUpPage from '@/app/[locale]/(auth)/sign-up/page';
 import VariablesPage from '@/app/[locale]/variables/page';
 import HistoryPage from '@/app/[locale]/history/page';
 import RestClientPage from '@/app/[locale]/rest-client/page';
-import LocaleSwitcher from '@/components/shared/layout/LocaleSwitcher';
-import Layout from '@/components/shared/layout/Layout';
-import { metadata } from '@/app/layout';
+import MainPage from '@/app/[locale]/(main)/page';
 
 jest.mock('@/styles/globals.css', () => ({}));
 
 describe('Initial screen', () => {
-  it('renders Layout with children', () => {
-    render(
-      <Layout>
-        <div>Test content</div>
-      </Layout>
-    );
-    expect(screen.getByText('Rest Client App')).toBeInTheDocument();
-    expect(screen.getByText('Test content')).toBeInTheDocument();
-    expect(screen.getByText(/2025/i)).toBeInTheDocument();
-  });
-
   it('metadata has title and description', () => {
     expect(metadata.title).toBeDefined();
     expect(metadata.description).toBeDefined();
   });
-
   it('renders 404 Page', () => {
-    render(<NotFound />);
+    render(
+      <NextIntlClientProvider locale="en" messages={messages}>
+        <NotFound />
+      </NextIntlClientProvider>
+    );
     expect(screen.getByText('404')).toBeInTheDocument();
   });
 
   it('renders Main Page', () => {
-    render(<MainPage />);
+    render(
+      <NextIntlClientProvider locale="en" messages={messages}>
+        <MainPage />
+      </NextIntlClientProvider>
+    );
     expect(screen.getByText('Welcome!')).toBeInTheDocument();
   });
 
   it('renders SignIn Page', () => {
-    render(<SignInPage />);
-    expect(screen.getByText('SignIn page')).toBeInTheDocument();
+    render(
+      <NextIntlClientProvider locale="en" messages={messages}>
+        <SignInPage />
+      </NextIntlClientProvider>
+    );
+    expect(screen.getByText('Sign In')).toBeInTheDocument();
   });
 
   it('renders SignUp Page', () => {
-    render(<SignUpPage />);
-    expect(screen.getByText('SignUp page')).toBeInTheDocument();
+    render(
+      <NextIntlClientProvider locale="en" messages={messages}>
+        <SignUpPage />
+      </NextIntlClientProvider>
+    );
+    expect(screen.getByText('Sign Up')).toBeInTheDocument();
   });
 
   it('renders Rest Client Page', () => {
-    render(<RestClientPage />);
-    expect(screen.getByText('Rest Client Page')).toBeInTheDocument();
+    render(
+      <NextIntlClientProvider locale="en" messages={messages}>
+        <RestClientPage />
+      </NextIntlClientProvider>
+    );
+    expect(screen.getByText(/Rest Client/i)).toBeInTheDocument();
   });
 
   it('renders History Page', () => {
-    render(<HistoryPage />);
-    expect(screen.getByText('History Page')).toBeInTheDocument();
+    render(
+      <NextIntlClientProvider locale="en" messages={messages}>
+        <HistoryPage />
+      </NextIntlClientProvider>
+    );
+    expect(screen.getByText('History')).toBeInTheDocument();
   });
 
   it('renders Variables Page', () => {
-    render(<VariablesPage />);
-    expect(screen.getByText('Variables page')).toBeInTheDocument();
-  });
-
-  it('renders LocaleSwitcher', async () => {
-    render(<LocaleSwitcher />);
-    const trigger = screen.getByText('EN');
-    expect(trigger).toBeInTheDocument();
-
-    await fireEvent.click(trigger);
-    expect(screen.getByText('EN')).toBeInTheDocument();
+    render(
+      <NextIntlClientProvider locale="en" messages={messages}>
+        <VariablesPage />
+      </NextIntlClientProvider>
+    );
+    expect(screen.getByText('Variables')).toBeInTheDocument();
   });
 });

@@ -1,4 +1,7 @@
 import type { Config } from 'jest';
+import nextJest from 'next/jest.js';
+
+const createJestConfig = nextJest({ dir: './' });
 
 const config: Config = {
   preset: 'ts-jest',
@@ -42,5 +45,13 @@ const config: Config = {
     }
   }
 };
+
+module.exports = async () => ({
+  ...(await createJestConfig({
+    testEnvironment: 'jsdom',
+    rootDir: 'tests'
+  })()),
+  transformIgnorePatterns: ['node_modules/(?!next-intl)/']
+});
 
 export default config;

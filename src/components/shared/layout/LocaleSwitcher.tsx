@@ -8,13 +8,11 @@ import {
   DropdownMenuTrigger
 } from '@/components/ui/dropdown-menu';
 import { useRouter, usePathname } from 'next/navigation';
-import { useTranslations } from 'next-intl';
 import { LOCALES } from '@/lib/constants';
 
 export default function LocaleSwitcher() {
   const router = useRouter();
   const pathname = usePathname();
-  const t = useTranslations('language');
 
   const switchLocale = (nextLocale: string) => {
     const segments = pathname.split('/');
@@ -28,7 +26,7 @@ export default function LocaleSwitcher() {
     <DropdownMenu>
       <DropdownMenuTrigger asChild>
         <Button variant="outline" size="sm">
-          {t('label')}
+          EN/RU
         </Button>
       </DropdownMenuTrigger>
       <DropdownMenuContent>
