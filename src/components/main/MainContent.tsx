@@ -5,40 +5,39 @@ import { ROUTES } from '@/lib/routes';
 import { JSX } from 'react';
 
 const MainContent = (): JSX.Element => {
-  const t = useTranslations('MainContent');
-  const buttonLabels = useTranslations('button');
+  const t = useTranslations();
 
   return (
     <>
       <div className="flex flex-col gap-10 bg-white text-black px-20 py-10 rounded-md">
-        <h2>{t('title')}</h2>
+        <h2>{t('MainContent.title')}</h2>
         <div className="flex items-center gap-4">
           <Button variant="secondary" size="sm" asChild>
-            <Link href={ROUTES.signin} aria-label={buttonLabels('signInAriaLabel')}>
-              {buttonLabels('signIn')}
+            <Link href={ROUTES.signin} aria-label={t('button.signInAriaLabel')}>
+              {t('button.signIn')}
             </Link>
           </Button>
           <Button variant="default" size="sm" asChild>
-            <Link href={ROUTES.signup} aria-label={buttonLabels('signUpAriaLabel')}>
-              {buttonLabels('signUp')}
+            <Link href={ROUTES.signup} aria-label={t('button.signUpAriaLabel')}>
+              {t('button.signUp')}
             </Link>
           </Button>
         </div>
       </div>
       <div className="flex gap-5 p-5 bg-white rounded-md">
         <Button variant="default" size="sm" asChild>
-          <Link href={ROUTES.client} aria-label={t('buttonRestClientAriaLabel')}>
-            {t('buttonRestClient')}
+          <Link href={ROUTES.client} aria-label={t('MainContent.buttonRestClientAriaLabel')}>
+            {t('MainContent.buttonRestClient')}
           </Link>
         </Button>
         <Button variant="default" size="sm" asChild>
-          <Link href={ROUTES.history} aria-label={t('buttonHistoryAriaLabel')}>
-            {t('buttonHistory')}
+          <Link href={ROUTES.history} aria-label={t('MainContent.buttonHistoryAriaLabel')}>
+            {t('MainContent.buttonHistory')}
           </Link>
         </Button>
         <Button variant="default" size="sm" asChild>
-          <Link href={ROUTES.variables} aria-label={t('buttonVariablesAriaLabel')}>
-            {t('buttonVariables')}
+          <Link href={ROUTES.variables} aria-label={t('MainContent.buttonVariablesAriaLabel')}>
+            {t('MainContent.buttonVariables')}
           </Link>
         </Button>
       </div>
