@@ -1,9 +1,0 @@
-{
-  "title": "Welcome!",
-  "buttonRestClient": "Rest Client",
-  "buttonRestClientAriaLabel": "Go to rest-client page",
-  "buttonHistory": "History",
-  "buttonHistoryAriaLabel": "Go to history page",
-  "buttonVariables": "Variables",
-  "buttonVariablesAriaLabel": "Go to variables page"
-}

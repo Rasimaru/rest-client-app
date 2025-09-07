@@ -1,9 +1,0 @@
-{
-  "title": "Добро пожаловать!",
-  "buttonRestClient": "REST клиент",
-  "buttonRestClientAriaLabel": "Перейти на страницу REST клиента",
-  "buttonHistory": "История",
-  "buttonHistoryAriaLabel": "Перейти на страницу истории",
-  "buttonVariables": "Переменные",
-  "buttonVariablesAriaLabel": "Перейти на страницу переменных"
-}
