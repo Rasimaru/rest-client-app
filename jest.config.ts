@@ -27,7 +27,6 @@ const customJestConfig: Config = {
   transform: {
     '^.+\\.(js|jsx|ts|tsx)$': ['ts-jest', { tsconfig: './tsconfig.jest.json' }]
   },
-  transformIgnorePatterns: ['node_modules/(?!next-intl)/'],
   coveragePathIgnorePatterns: [
     '/node_modules/',
     '<rootDir>/src/components/ui/',
