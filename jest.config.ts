@@ -3,7 +3,7 @@ import nextJest from 'next/jest.js';
 
 const createJestConfig = nextJest({ dir: './' });
 
-const config: Config = {
+const customJestConfig: Config = {
   preset: 'ts-jest',
   testEnvironment: 'jest-environment-jsdom',
   clearMocks: true,
@@ -27,8 +27,11 @@ const config: Config = {
   transform: {
     '^.+\\.(js|jsx|ts|tsx)$': ['ts-jest', { tsconfig: './tsconfig.jest.json' }]
   },
-  transformIgnorePatterns: ['/node_modules/'],
-  coveragePathIgnorePatterns: ['/node_modules/', '<rootDir>/src/components/ui/'],
+  coveragePathIgnorePatterns: [
+    '/node_modules/',
+    '<rootDir>/src/components/ui/',
+    '<rootDir>/src/i18n/'
+  ],
   setupFilesAfterEnv: ['<rootDir>/jest.setup.ts'],
   testMatch: [
     '<rootDir>/tests/**/*.{test,spec}.{ts,tsx}',
@@ -47,11 +50,6 @@ const config: Config = {
 };
 
 module.exports = async () => ({
-  ...(await createJestConfig({
-    testEnvironment: 'jsdom',
-    rootDir: ''
-  })()),
+  ...(await createJestConfig(customJestConfig)()),
   transformIgnorePatterns: ['node_modules/(?!next-intl)/']
 });
-
-export default config;

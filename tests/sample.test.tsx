@@ -10,10 +10,28 @@ import VariablesPage from '@/app/[locale]/variables/page';
 import HistoryPage from '@/app/[locale]/history/page';
 import RestClientPage from '@/app/[locale]/rest-client/page';
 import MainPage from '@/app/[locale]/(main)/page';
+import Layout from '@/components/shared/layout/Layout';
 
 jest.mock('@/styles/globals.css', () => ({}));
 
+jest.mock('next/navigation', () => ({
+  useRouter: jest.fn(),
+  usePathname: jest.fn()
+}));
+
 describe('Initial screen', () => {
+  it('renders Layout with children', () => {
+    const Child = () => <div>Test Child</div>;
+    render(
+      <NextIntlClientProvider locale="en" messages={messages}>
+        <Layout>
+          <Child />
+        </Layout>
+      </NextIntlClientProvider>
+    );
+    expect(screen.getByText('Test Child')).toBeInTheDocument();
+  });
+
   it('metadata has title and description', () => {
     expect(metadata.title).toBeDefined();
     expect(metadata.description).toBeDefined();
