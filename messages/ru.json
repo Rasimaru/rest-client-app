@@ -30,7 +30,12 @@
     "title": "REST клиент"
   },
   "VariablesPage": {
-    "title": "Управление переменными"
+    "title": "Управление переменными",
+    "inputNamePlaceholder": "Имя переменной",
+    "inputValuePlaceholder": "Значение",
+    "addButton": "Добавить",
+    "noVariablesMessage": "Переменные отсутствуют",
+    "removeButton": "Удалить"
   },
   "NotFound": {
     "title": "Страница не найдена.",

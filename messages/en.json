@@ -30,7 +30,12 @@
     "title": "REST Client"
   },
   "VariablesPage": {
-    "title": "Manage Variables"
+    "title": "Manage Variables",
+    "inputNamePlaceholder": "Variable name",
+    "inputValuePlaceholder": "Value",
+    "addButton": "Add",
+    "noVariablesMessage": "No variables yet",
+    "removeButton": "Remove"
   },
   "NotFound": {
     "title": "This page could not be found.",

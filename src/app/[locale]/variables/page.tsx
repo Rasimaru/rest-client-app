@@ -27,23 +27,23 @@ const VariablesPage = () => {
           <div className="flex gap-2">
             <input
               className="border p-2 rounded-md"
-              placeholder="Variable name"
+              placeholder={t('inputNamePlaceholder')}
               value={key}
               onChange={(e) => setKey(e.target.value)}
             />
             <input
               className="border p-2 rounded-md"
-              placeholder="Value"
+              placeholder={t('inputValuePlaceholder')}
               value={value}
               onChange={(e) => setValue(e.target.value)}
             />
             <Button variant="secondary" onClick={handleAdd}>
-              Add
+              {t('addButton')}
             </Button>
           </div>
 
           {Object.keys(variables).length === 0 ? (
-            <p className="text-gray-500 text-sm">No variables yet</p>
+            <p className="text-gray-500 text-sm">{t('noVariablesMessage')}</p>
           ) : (
             <ul className="space-y-2">
               {Object.entries(variables).map(([k, v]) => (
@@ -53,7 +53,7 @@ const VariablesPage = () => {
                     <span className="text-gray-400 ml-4">{v}</span>
                   </div>
                   <Button variant="destructive" onClick={() => removeVariable(k)}>
-                    Remove
+                    {t('removeButton')}
                   </Button>
                 </li>
               ))}
