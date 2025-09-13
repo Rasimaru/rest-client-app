@@ -96,6 +96,6 @@ describe('Initial screen', () => {
         <VariablesPage />
       </NextIntlClientProvider>
     );
-    expect(screen.getByText('Variables')).toBeInTheDocument();
+    expect(screen.getByText('Manage Variables')).toBeInTheDocument();
   });
 });
