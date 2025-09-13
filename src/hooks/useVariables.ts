@@ -5,13 +5,12 @@ import { useEffect, useState } from 'react';
 const STORAGE_KEY = 'rest-client-variables';
 
 export function useVariables() {
-  const [variables, setVariables] = useState<Record<string, string>>({});
-
-  useEffect(() => {
+  const [variables, setVariables] = useState<Record<string, string>>(() => {
     const stored = localStorage.getItem(STORAGE_KEY);
-    if (stored) setVariables(JSON.parse(stored));
-  }, []);
+    return stored ? JSON.parse(stored) : {};
+  });
 
+  // Save variables to localStorage on change
   useEffect(() => {
     localStorage.setItem(STORAGE_KEY, JSON.stringify(variables));
   }, [variables]);

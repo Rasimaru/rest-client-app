@@ -5,7 +5,7 @@ import { hasLocale, NextIntlClientProvider } from 'next-intl';
 import Providers from '@/components/shared/Providers';
 import Layout from '@/components/shared/layout/Layout';
 import { routing } from '@/i18n/routing';
-import NotFound from './not-found';
+import NotFound from '../not-found';
 
 // eslint-disable-next-line react-refresh/only-export-components
 export const metadata: Metadata = {
