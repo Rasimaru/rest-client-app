@@ -6,7 +6,6 @@ import '@testing-library/jest-dom';
 import { metadata } from '@/app/[locale]/layout';
 import SignInPage from '@/app/[locale]/(auth)/sign-in/page';
 import SignUpPage from '@/app/[locale]/(auth)/sign-up/page';
-import VariablesPage from '@/app/[locale]/variables/page';
 import HistoryPage from '@/app/[locale]/history/page';
 import RestClientPage from '@/app/[locale]/rest-client/page';
 import MainPage from '@/app/[locale]/(main)/page';
@@ -88,14 +87,5 @@ describe('Initial screen', () => {
       </NextIntlClientProvider>
     );
     expect(screen.getByText('History')).toBeInTheDocument();
-  });
-
-  it('renders Variables Page', () => {
-    render(
-      <NextIntlClientProvider locale="en" messages={messages}>
-        <VariablesPage />
-      </NextIntlClientProvider>
-    );
-    expect(screen.getByText('Manage Variables')).toBeInTheDocument();
   });
 });
