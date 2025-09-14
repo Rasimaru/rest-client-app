@@ -13,8 +13,14 @@ export const metadata: Metadata = {
   description: 'A simple REST client app with history and variables management'
 };
 
-const RootLayout = ({ children, params }: { children: ReactNode; params: { locale: string } }) => {
-  const { locale } = params;
+const RootLayout = async ({
+  children,
+  params
+}: {
+  children: ReactNode;
+  params: Promise<{ locale: string }>;
+}) => {
+  const { locale } = await params;
   if (!hasLocale(routing.locales, locale)) {
     NotFound();
   }
