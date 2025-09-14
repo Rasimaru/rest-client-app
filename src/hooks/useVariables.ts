@@ -1,8 +1,7 @@
 'use client';
 
+import { STORAGE_KEY } from '@/lib/constants';
 import { useEffect, useState } from 'react';
-
-const STORAGE_KEY = 'rest-client-variables';
 
 export function useVariables() {
   const [variables, setVariables] = useState<Record<string, string>>(() => {

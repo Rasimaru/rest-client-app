@@ -2,6 +2,7 @@ import { Button } from '@/components/ui/button';
 import { useVariables } from '@/hooks/useVariables';
 import { useTranslations } from 'next-intl';
 import { useState } from 'react';
+import Input from '../shared/Input';
 
 const VariablesPage = () => {
   const t = useTranslations('VariablesPage');
@@ -22,18 +23,16 @@ const VariablesPage = () => {
       <div className="container">
         <h2 className="mb-4">{t('title')}</h2>
         <div className="space-y-4">
-          <div className="flex gap-2">
-            <input
-              className="border p-2 rounded-md"
+          <div className="flex gap-2 flex-col md:flex-row">
+            <Input
               placeholder={t('inputNamePlaceholder')}
               value={key}
-              onChange={(e) => setKey(e.target.value)}
+              onChange={(e: React.ChangeEvent<HTMLInputElement>) => setKey(e.target.value)}
             />
-            <input
-              className="border p-2 rounded-md"
+            <Input
               placeholder={t('inputValuePlaceholder')}
               value={value}
-              onChange={(e) => setValue(e.target.value)}
+              onChange={(e: React.ChangeEvent<HTMLInputElement>) => setValue(e.target.value)}
             />
             <Button variant="secondary" onClick={handleAdd}>
               {t('addButton')}

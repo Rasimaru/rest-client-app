@@ -4,5 +4,6 @@ export const FOOTER_LINKS = {
 };
 
 export const LOCALES = ['en', 'ru'];
-
 export const DEFAULT_LOCALE = 'en';
+
+export const STORAGE_KEY = 'rest-client-variables';
