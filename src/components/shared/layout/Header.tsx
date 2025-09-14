@@ -1,15 +1,14 @@
 'use client';
 
 import Link from 'next/link';
-import { Button } from '@/components/ui/button';
 import { Server } from 'lucide-react';
 import { ROUTES } from '@/lib/routes';
 import LocaleSwitcher from './LocaleSwitcher';
 import { useTranslations } from 'next-intl';
+import AuthButtons from '../AuthButtons';
 
 const Header = () => {
   const t = useTranslations('Header');
-  const buttonLabels = useTranslations('button');
 
   return (
     <header className="w-full sticky top-0 border-b border-gray-200 dark:border-gray-700 bg-gray-100 dark:bg-gray-900 text-primary">
@@ -22,18 +21,9 @@ const Header = () => {
           <Server size={32} />
           <h1>{t('title')}</h1>
         </Link>
-        <LocaleSwitcher />
-        <div className="flex items-center gap-4">
-          <Button variant="secondary" size="sm" asChild>
-            <Link href={ROUTES.signin} aria-label={buttonLabels('signInAriaLabel')}>
-              {buttonLabels('signIn')}
-            </Link>
-          </Button>
-          <Button size="sm" asChild>
-            <Link href={ROUTES.signup} aria-label={buttonLabels('signUpAriaLabel')}>
-              {buttonLabels('signUp')}
-            </Link>
-          </Button>
+        <div className="flex sm:gap-5 gap-2">
+          <LocaleSwitcher />
+          <AuthButtons />
         </div>
       </nav>
     </header>
