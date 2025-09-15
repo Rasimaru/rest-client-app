@@ -2,7 +2,7 @@ import { Button } from '@/components/ui/button';
 import { useVariables } from '@/hooks/useVariables';
 import { useTranslations } from 'next-intl';
 import { useState } from 'react';
-import Input from '../../../components/shared/Input';
+import Input from '@/components/shared/Input';
 import VariableItem from './VariableItem';
 
 const VariablesPage = () => {
