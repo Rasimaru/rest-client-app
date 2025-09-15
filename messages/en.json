@@ -9,7 +9,7 @@
     "schoolImgAlt": "School logo"
   },
   "MainContent": {
-    "title": "Welcome!",
+    "title": "Welcome",
     "buttonRestClient": "Rest Client",
     "buttonRestClientAriaLabel": "Go to rest-client page",
     "buttonHistory": "History",
@@ -46,7 +46,9 @@
     "signIn": "Sign In",
     "signInAriaLabel": "Go to sign-in page",
     "signUp": "Sign Up",
-    "signUpAriaLabel": "Go to sign-up page"
+    "signUpAriaLabel": "Go to sign-up page",
+    "signOut": "Sign Out",
+    "signOutAriaLabel": "Sign Out from your account"
   },
   "language": {
     "label": "Language"

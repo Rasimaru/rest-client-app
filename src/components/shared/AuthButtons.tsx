@@ -29,8 +29,13 @@ const AuthButtons = () => {
           </Button>
         </>
       ) : (
-        <Button size="sm" onClick={() => signOut()} className="cursor-pointer">
-          Sign Out
+        <Button
+          size="sm"
+          onClick={() => signOut()}
+          className="cursor-pointer"
+          aria-label={t('signOutAriaLabel')}
+        >
+          {t('signOut')}
         </Button>
       )}
     </div>
