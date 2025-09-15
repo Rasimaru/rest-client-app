@@ -1,17 +1,20 @@
+jest.mock('@/styles/globals.css', () => ({}));
+
 import { render, screen } from '@testing-library/react';
 import { NextIntlClientProvider } from 'next-intl';
 import messages from '../messages/en.json';
-import NotFound from '@/app/not-found';
-import '@testing-library/jest-dom';
 import { metadata } from '@/app/[locale]/layout';
 import SignInPage from '@/app/[locale]/(auth)/sign-in/page';
 import SignUpPage from '@/app/[locale]/(auth)/sign-up/page';
 import HistoryPage from '@/app/[locale]/history/page';
 import RestClientPage from '@/app/[locale]/rest-client/page';
+import NotFound from '@/app/not-found';
 import MainPage from '@/app/[locale]/(main)/page';
 import Layout from '@/components/shared/layout/Layout';
 
-jest.mock('@/styles/globals.css', () => ({}));
+jest.mock('@/components/main/MainContent', () => () => <div>Main Content</div>);
+jest.mock('@/components/shared/layout/Header', () => () => <div>HeaderMock</div>);
+jest.mock('@/components/shared/layout/Footer', () => () => <div>FooterMock</div>);
 
 jest.mock('next/navigation', () => ({
   useRouter: jest.fn(),
@@ -21,6 +24,7 @@ jest.mock('next/navigation', () => ({
 describe('Initial screen', () => {
   it('renders Layout with children', () => {
     const Child = () => <div>Test Child</div>;
+
     render(
       <NextIntlClientProvider locale="en" messages={messages}>
         <Layout>
@@ -29,12 +33,15 @@ describe('Initial screen', () => {
       </NextIntlClientProvider>
     );
     expect(screen.getByText('Test Child')).toBeInTheDocument();
+    expect(screen.getByText('HeaderMock')).toBeInTheDocument();
+    expect(screen.getByText('FooterMock')).toBeInTheDocument();
   });
-
+  
   it('metadata has title and description', () => {
     expect(metadata.title).toBeDefined();
     expect(metadata.description).toBeDefined();
   });
+
   it('renders 404 Page', () => {
     render(
       <NextIntlClientProvider locale="en" messages={messages}>
@@ -50,7 +57,7 @@ describe('Initial screen', () => {
         <MainPage />
       </NextIntlClientProvider>
     );
-    expect(screen.getByText('Welcome!')).toBeInTheDocument();
+    expect(screen.getByText(/Main Content/i)).toBeInTheDocument();
   });
 
   it('renders SignIn Page', () => {
