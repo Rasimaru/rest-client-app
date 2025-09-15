@@ -2,7 +2,9 @@
 
 import dynamic from 'next/dynamic';
 
-const DynamicVariables = dynamic(() => import('@/components/pages/VariablesPage'), { ssr: false });
+const DynamicVariables = dynamic(() => import('@/app/[locale]/variables/VariablesPage'), {
+  ssr: false
+});
 
 const VariablesPage = () => {
   return <DynamicVariables />;

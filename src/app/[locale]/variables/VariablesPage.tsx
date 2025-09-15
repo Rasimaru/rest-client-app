@@ -2,7 +2,8 @@ import { Button } from '@/components/ui/button';
 import { useVariables } from '@/hooks/useVariables';
 import { useTranslations } from 'next-intl';
 import { useState } from 'react';
-import Input from '../shared/Input';
+import Input from '../../../components/shared/Input';
+import VariableItem from './VariableItem';
 
 const VariablesPage = () => {
   const t = useTranslations('VariablesPage');
@@ -44,15 +45,7 @@ const VariablesPage = () => {
           ) : (
             <ul className="space-y-2">
               {Object.entries(variables).map(([k, v]) => (
-                <li key={k} className="flex items-center justify-between rounded-lg border p-2">
-                  <div>
-                    <span className="font-semibold">{k}</span>:
-                    <span className="text-gray-400 ml-4">{v}</span>
-                  </div>
-                  <Button variant="destructive" onClick={() => removeVariable(k)}>
-                    {t('removeButton')}
-                  </Button>
-                </li>
+                <VariableItem key={k} k={k} v={v} removeVariable={removeVariable} />
               ))}
             </ul>
           )}
