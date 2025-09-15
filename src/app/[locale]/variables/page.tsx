@@ -1,9 +1,13 @@
-import { useTranslations } from 'next-intl';
+'use client';
+
+import dynamic from 'next/dynamic';
+
+const DynamicVariables = dynamic(() => import('@/app/[locale]/variables/VariablesPage'), {
+  ssr: false
+});
 
 const VariablesPage = () => {
-  const t = useTranslations('VariablesPage');
-
-  return <div>{t('title')}</div>;
+  return <DynamicVariables />;
 };
 
 export default VariablesPage;
