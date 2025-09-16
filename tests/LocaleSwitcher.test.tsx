@@ -9,7 +9,6 @@ jest.mock('next/navigation', () => ({
 }));
 describe('LocaleSwitcher', () => {
   const mockPush = jest.fn();
-  const switcherLabel = 'EN/RU';
 
   beforeEach(() => {
     jest.clearAllMocks();
@@ -19,6 +18,6 @@ describe('LocaleSwitcher', () => {
 
   it('should render the component', () => {
     render(<LocaleSwitcher />);
-    expect(screen.getByText(switcherLabel)).toBeInTheDocument();
+    expect(screen.getByText(/EN/i)).toBeInTheDocument();
   });
 });

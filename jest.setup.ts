@@ -24,7 +24,14 @@ jest.mock('next-intl', () => ({
       SignUpPage: { title: 'Sign Up' },
       RestClientPage: { title: 'REST Client' },
       History: { title: 'History' },
-      VariablesPage: { title: 'Variables' },
+      VariablesPage: {
+        title: 'Manage Variables',
+        inputNamePlaceholder: 'Variable name',
+        inputValuePlaceholder: 'Value',
+        addButton: 'Add',
+        noVariablesMessage: 'No variables yet',
+        removeButton: 'Remove'
+      },
       button: {
         signIn: 'Sign In',
         signInAriaLabel: 'Go to sign-in page',
