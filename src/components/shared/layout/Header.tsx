@@ -4,17 +4,16 @@ import Link from 'next/link';
 import { Button } from '@/components/ui/button';
 import { Server } from 'lucide-react';
 import { ROUTES } from '@/lib/routes';
-import { JSX } from 'react';
 import LocaleSwitcher from './LocaleSwitcher';
 import { useTranslations } from 'next-intl';
 
-const Header = (): JSX.Element => {
+const Header = () => {
   const t = useTranslations('Header');
   const buttonLabels = useTranslations('button');
 
   return (
-    <header className="w-full border-b border-gray-200 dark:border-gray-700 bg-gray-300 dark:bg-gray-900 text-primary">
-      <nav className="container mx-auto flex flex-wrap py-3 items-center justify-between gap-4">
+    <header className="w-full sticky top-0 border-b border-gray-200 dark:border-gray-700 bg-gray-100 dark:bg-gray-900 text-primary">
+      <nav className="container xl:w-7xl mx-auto flex flex-wrap p-2.5 items-center justify-between gap-4">
         <Link
           href={ROUTES.main}
           aria-label={t('linkAriaLabel')}
