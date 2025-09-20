@@ -29,7 +29,7 @@ export async function middleware(req: NextRequest) {
   }
 
   if (!token && isPrivateRoute) {
-    return NextResponse.redirect(new URL(getLocalizedPath(pathname, ROUTES.main), req.url));
+    return NextResponse.redirect(new URL(getLocalizedPath(pathname, ROUTES.signin), req.url));
   }
 
   return response;
