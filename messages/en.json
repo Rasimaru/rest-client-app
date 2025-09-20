@@ -21,10 +21,19 @@
     "title": "History"
   },
   "SignInPage": {
-    "title": "Sign In"
+    "title": "Welcome back",
+    "description": "Let's get started. Sign In into your account with Email and Password.",
+    "forgotPassword": "Forgot your password?",
+    "submit": "Sign In",
+    "github": "Sign In with GitHub"
   },
   "SignUpPage": {
-    "title": "Sign Up"
+    "title": "Create an account",
+    "description": "Let's get started. Fill in the details below to create your account.",
+    "submit": "Sign Up",
+    "github": "Sign Up with GitHub",
+    "haveAccount": "Already have an account?",
+    "signInLink": "Sign In"
   },
   "RestClientPage": {
     "title": "REST Client"
@@ -52,5 +61,11 @@
   },
   "language": {
     "label": "Language"
+  },
+  "form": {
+    "email": "Email",
+    "emailPlaceholder": "johndoe@mail.com",
+    "password": "Password",
+    "passwordPlaceholder": "********"
   }
 }

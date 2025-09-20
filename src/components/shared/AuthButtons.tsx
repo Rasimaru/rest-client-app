@@ -3,7 +3,6 @@
 import { Link } from '@/i18n/navigation';
 import { Button } from '../ui/button';
 import { ROUTES } from '@/lib/routes';
-import {} from '@/auth';
 import { useTranslations } from 'next-intl';
 import { signOut, useSession } from 'next-auth/react';
 

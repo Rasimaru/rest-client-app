@@ -4,15 +4,24 @@ import Link from 'next/link';
 import { useTranslations } from 'next-intl';
 import { Button } from '../ui/button';
 import { ROUTES } from '@/lib/routes';
-import { JSX } from 'react';
+import { JSX, useEffect } from 'react';
 import { useSession } from 'next-auth/react';
 import AuthButtons from '../shared/AuthButtons';
+import { useRouter } from 'next/navigation';
 
 const MainContent = (): JSX.Element => {
   const { data: session, status } = useSession();
+  const router = useRouter();
+
   const name = session?.user?.name || session?.user?.email;
 
   const t = useTranslations('MainContent');
+
+  useEffect(() => {
+    if (status === 'unauthenticated') {
+      router.push(ROUTES.main);
+    }
+  }, [status, router]);
 
   if (status === 'loading') {
     return <span>Loading...</span>;
