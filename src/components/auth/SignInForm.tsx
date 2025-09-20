@@ -15,8 +15,12 @@ import { AuthSchema } from '@/lib/validationSchemas';
 import FieldWrapper from '../shared/FieldWrapper';
 import { signIn } from 'next-auth/react';
 import ProviderButton from './ProviderButton';
+import { useTranslations } from 'next-intl';
 
 export function SignInForm() {
+  const t = useTranslations('SignInPage');
+  const f = useTranslations('form');
+
   const router = useRouter();
   const formSchema = AuthSchema;
 
@@ -51,10 +55,8 @@ export function SignInForm() {
     <div className="flex flex-col gap-6">
       <Card className="mx-auto max-w-100 w-full">
         <CardHeader className="text-center">
-          <CardTitle className="text-xl">Welcome back</CardTitle>
-          <CardDescription>
-            Let&apos;s get started. Sign In into your account with Email and Password.
-          </CardDescription>
+          <CardTitle className="text-xl">{t('title')}</CardTitle>
+          <CardDescription>{t('description')}</CardDescription>
         </CardHeader>
         <CardContent className="flex flex-col gap-3">
           <Form {...form}>
@@ -64,16 +66,16 @@ export function SignInForm() {
                   <FieldWrapper
                     form={form}
                     name="email"
-                    label="Email"
-                    placeholder="johndoe@mail.com"
+                    label={f('email')}
+                    placeholder={f('emailPlaceholder')}
                     type="email"
                     autocomplete="email"
                   />
                   <FieldWrapper
                     form={form}
                     name="password"
-                    label="Password"
-                    placeholder="********"
+                    label={f('password')}
+                    placeholder={f('passwordPlaceholder')}
                     type="password"
                     autocomplete="current-password"
                   >
@@ -82,11 +84,11 @@ export function SignInForm() {
                       className="ml-auto inline-block text-sm underline"
                       onClick={() => toast.info("Sorry! Feature isn't ready yet.")}
                     >
-                      Forgot your password?
+                      {t('forgotPassword')}
                     </Link>
                   </FieldWrapper>
                   <Button type="submit" className="w-full cursor-pointer">
-                    Sign In
+                    {t('submit')}
                   </Button>
                 </div>
               </div>
@@ -95,14 +97,14 @@ export function SignInForm() {
           <div className="flex flex-col gap-3">
             <div className="after:border-border relative text-center text-sm after:absolute after:inset-0 after:top-1/2 after:z-0 after:flex after:items-center after:border-t">
               <span className="bg-card text-muted-foreground relative z-10 px-2">
-                Or continue with
+                {t('continue')}
               </span>
             </div>
-            <ProviderButton provider="github" icon={<GithubIcon />} label="Sign In with GitHub" />
+            <ProviderButton provider="github" icon={<GithubIcon />} label={t('github')} />
             <div className="text-center text-sm">
-              Don&apos;t have an account?{' '}
+              {t('haveAccount')}
               <Link href={ROUTES.signup} className="underline underline-offset-4">
-                Sign Up
+                {t('signUpLink')}
               </Link>
             </div>
           </div>

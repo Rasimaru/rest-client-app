@@ -16,8 +16,12 @@ import FieldWrapper from '../shared/FieldWrapper';
 import { signIn } from 'next-auth/react';
 import { registerUser } from '@/lib/actions/registerUser';
 import ProviderButton from './ProviderButton';
+import { useTranslations } from 'next-intl';
 
 export function SignUpForm() {
+  const t = useTranslations('SignUpPage');
+  const f = useTranslations('form');
+
   const router = useRouter();
   const formSchema = AuthSchema;
 
@@ -56,10 +60,8 @@ export function SignUpForm() {
     <div className="flex flex-col gap-6">
       <Card className="mx-auto max-w-100 w-full ">
         <CardHeader className="text-center">
-          <CardTitle className="text-xl">Create an account</CardTitle>
-          <CardDescription>
-            Let&apos;s get started. Fill in the details below to create your account.
-          </CardDescription>
+          <CardTitle className="text-xl">{t('title')}</CardTitle>
+          <CardDescription>{t('description')}</CardDescription>
         </CardHeader>
         <CardContent className="flex flex-col gap-3">
           <Form {...form}>
@@ -69,21 +71,21 @@ export function SignUpForm() {
                   <FieldWrapper
                     form={form}
                     name="email"
-                    label="Email"
-                    placeholder="johndoe@mail.com"
+                    label={f('email')}
+                    placeholder={f('emailPlaceholder')}
                     type="email"
                     autocomplete="email"
                   />
                   <FieldWrapper
                     form={form}
                     name="password"
-                    label="Password"
-                    placeholder="********"
+                    label={f('password')}
+                    placeholder={f('passwordPlaceholder')}
                     type="password"
                     autocomplete="current-password"
                   />
                   <Button type="submit" className="w-full cursor-pointer">
-                    Sign Up
+                    {t('submit')}
                   </Button>
                 </div>
               </div>
@@ -92,14 +94,14 @@ export function SignUpForm() {
           <div className="flex flex-col gap-3">
             <div className="after:border-border relative text-center text-sm after:absolute after:inset-0 after:top-1/2 after:z-0 after:flex after:items-center after:border-t">
               <span className="bg-card text-muted-foreground relative z-10 px-2">
-                Or continue with
+                {t('continue')}
               </span>
             </div>
-            <ProviderButton provider="github" icon={<GithubIcon />} label="Sign Up with GitHub" />
+            <ProviderButton provider="github" icon={<GithubIcon />} label={t('github')} />
             <div className="text-center text-sm">
-              Already have an account?{' '}
+              {t('haveAccount')}
               <Link href={ROUTES.signin} className="underline underline-offset-4">
-                Sign In
+                {t('signInLink')}
               </Link>
             </div>
           </div>

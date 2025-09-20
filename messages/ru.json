@@ -4,12 +4,12 @@
     "linkAriaLabel": "Перейти на главную страницу"
   },
   "Footer": {
-    "githubLinkAriaLabel": "GitHub профиль",
+    "githubLinkAriaLabel": "Профиль GitHub",
     "schoolLinkAriaLabel": "RS Школа",
     "schoolImgAlt": "Логотип школы"
   },
   "MainContent": {
-    "title": "Добро пожаловать!",
+    "title": "Добро пожаловать",
     "buttonRestClient": "REST клиент",
     "buttonRestClientAriaLabel": "Перейти на страницу REST клиента",
     "buttonHistory": "История",
@@ -21,10 +21,23 @@
     "title": "История"
   },
   "SignInPage": {
-    "title": "Войти"
+    "title": "С возвращением",
+    "description": "Давайте начнём. Войдите в свой аккаунт с помощью Email и Пароля.",
+    "forgotPassword": "Забыли пароль?",
+    "submit": "Войти",
+    "github": "Войти через GitHub",
+    "haveAccount": "Нет аккаунта? ",
+    "signUpLink": "Зарегистрироваться",
+    "continue": "Или продолжите с помощью"
   },
   "SignUpPage": {
-    "title": "Регистрация"
+    "title": "Создайте аккаунт",
+    "description": "Давайте начнём. Заполните данные ниже, чтобы создать аккаунт.",
+    "submit": "Зарегистрироваться",
+    "github": "Зарегистрироваться через GitHub",
+    "haveAccount": "Уже есть аккаунт? ",
+    "signInLink": "Войти",
+    "continue": "Или продолжите с помощью"
   },
   "RestClientPage": {
     "title": "REST клиент"
@@ -45,10 +58,18 @@
   "button": {
     "signIn": "Войти",
     "signInAriaLabel": "Перейти на страницу входа",
-    "signUp": "Регистрация",
-    "signUpAriaLabel": "Перейти на страницу регистрации"
+    "signUp": "Зарегистрироваться",
+    "signUpAriaLabel": "Перейти на страницу регистрации",
+    "signOut": "Выйти",
+    "signOutAriaLabel": "Выйти из аккаунта"
   },
   "language": {
     "label": "Язык"
+  },
+  "form": {
+    "email": "Email",
+    "emailPlaceholder": "johndoe@mail.com",
+    "password": "Пароль",
+    "passwordPlaceholder": "********"
   }
 }

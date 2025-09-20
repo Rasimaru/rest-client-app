@@ -25,15 +25,19 @@
     "description": "Let's get started. Sign In into your account with Email and Password.",
     "forgotPassword": "Forgot your password?",
     "submit": "Sign In",
-    "github": "Sign In with GitHub"
+    "github": "Sign In with GitHub",
+    "haveAccount": "Don't have an account? ",
+    "signUpLink": "Sign Up",
+    "continue": "Or continue with"
   },
   "SignUpPage": {
     "title": "Create an account",
     "description": "Let's get started. Fill in the details below to create your account.",
     "submit": "Sign Up",
     "github": "Sign Up with GitHub",
-    "haveAccount": "Already have an account?",
-    "signInLink": "Sign In"
+    "haveAccount": "Already have an account? ",
+    "signInLink": "Sign In",
+    "continue": "Or continue with"
   },
   "RestClientPage": {
     "title": "REST Client"
