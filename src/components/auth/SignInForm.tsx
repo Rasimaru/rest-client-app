@@ -14,6 +14,7 @@ import { toast } from 'sonner';
 import { AuthSchema } from '@/lib/validationSchemas';
 import FieldWrapper from '../shared/FieldWrapper';
 import { signIn } from 'next-auth/react';
+import ProviderButton from './ProviderButton';
 
 export function SignInForm() {
   const router = useRouter();
@@ -28,16 +29,21 @@ export function SignInForm() {
   });
 
   async function onSubmit(values: Yup.InferType<typeof formSchema>) {
-    const result = await signIn('credentials', {
-      ...values,
-      redirect: false
-    });
+    try {
+      const result = await signIn('credentials', {
+        ...values,
+        redirect: false
+      });
 
-    if (result?.error) {
-      toast.error(result.error === 'CredentialsSignin' ? 'Invalid credentials' : result.error);
-    } else {
+      if (result?.error) {
+        toast.error(result.error);
+        return;
+      }
       toast.success(`Signed in as ${values.email}`);
       router.push(ROUTES.main);
+    } catch (error: unknown) {
+      const message = error instanceof Error ? error.message : 'Sign In failed';
+      toast.error(message);
     }
   }
 
@@ -74,7 +80,7 @@ export function SignInForm() {
                     <Link
                       href="#"
                       className="ml-auto inline-block text-sm underline"
-                      onClick={() => toast.info("Feature isn't ready yet")}
+                      onClick={() => toast.info("Sorry! Feature isn't ready yet.")}
                     >
                       Forgot your password?
                     </Link>
@@ -92,16 +98,7 @@ export function SignInForm() {
                 Or continue with
               </span>
             </div>
-            <div className="flex flex-col gap-4">
-              <Button
-                variant="outline"
-                className="w-full cursor-pointer"
-                onClick={() => signIn('github', { callbackUrl: ROUTES.main })}
-              >
-                <GithubIcon className="flex" />
-                Sign In with Github
-              </Button>
-            </div>
+            <ProviderButton provider="github" icon={<GithubIcon />} label="Sign In with GitHub" />
             <div className="text-center text-sm">
               Don&apos;t have an account?{' '}
               <Link href={ROUTES.signup} className="underline underline-offset-4">

@@ -11,10 +11,11 @@ import { yupResolver } from '@hookform/resolvers/yup';
 import GithubIcon from '../shared/icons/Github';
 import { toast } from 'sonner';
 import { useRouter } from 'next/navigation';
-import { isRedirectError } from 'next/dist/client/components/redirect-error';
 import { Form } from '../ui/form';
 import FieldWrapper from '../shared/FieldWrapper';
 import { signIn } from 'next-auth/react';
+import { registerUser } from '@/lib/actions/registerUser';
+import ProviderButton from './ProviderButton';
 
 export function SignUpForm() {
   const router = useRouter();
@@ -30,21 +31,24 @@ export function SignUpForm() {
 
   async function onSubmit(values: Yup.InferType<typeof formSchema>) {
     try {
-      console.log(values);
+      const user = await registerUser(values.email, values.password);
+
       const result = await signIn('credentials', {
-        ...values,
+        email: user.email,
+        password: values.password,
         redirect: false
       });
+
       if (result?.error) {
-        toast.error(result.error === 'CredentialsSignin' ? 'Invalid credentials' : result.error);
+        toast.error(result.error);
         return;
       }
 
       toast.success(`Signed in as ${values.email}`);
       router.push(ROUTES.main);
-    } catch (error) {
-      if (isRedirectError(error)) return;
-      toast.error((error as Error).message || 'Sign Up failed');
+    } catch (error: unknown) {
+      const message = error instanceof Error ? error.message : 'Sign Up failed';
+      toast.error(message);
     }
   }
 
@@ -91,18 +95,9 @@ export function SignUpForm() {
                 Or continue with
               </span>
             </div>
-            <div className="flex flex-col gap-4">
-              <Button
-                variant="outline"
-                className="w-full cursor-pointer"
-                onClick={() => signIn('github', { redirect: false })}
-              >
-                <GithubIcon className="flex" />
-                Sign Up with Github
-              </Button>
-            </div>
+            <ProviderButton provider="github" icon={<GithubIcon />} label="Sign Up with GitHub" />
             <div className="text-center text-sm">
-              Already have account?{' '}
+              Already have an account?{' '}
               <Link href={ROUTES.signin} className="underline underline-offset-4">
                 Sign In
               </Link>
