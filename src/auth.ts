@@ -83,13 +83,13 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
   },
   events: {
     async createUser({ user }) {
-      console.log('✅ [NextAuth] User created:', user);
+      console.log('[NextAuth] User created:', user);
     },
     async signIn({ user, account, profile }) {
-      console.log('🔑 [NextAuth] Sign in:', { user, account, profile });
+      console.log('[NextAuth] Sign in:', { user, account, profile });
     },
     async session({ session }) {
-      console.log('💾 [NextAuth] Session:', session);
+      console.log('[NextAuth] Session:', session);
     }
   }
 });

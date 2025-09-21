@@ -16,6 +16,7 @@ model User {
   image         String?
   accounts      Account[]
   sessions      Session[]
+  history       History[]
   // Optional for WebAuthn support
   Authenticator Authenticator[]
  
@@ -79,4 +80,19 @@ model Authenticator {
   user User @relation(fields: [userId], references: [id], onDelete: Cascade)
  
   @@unique([userId, credentialID])
+}
+
+model History {
+  id          String   @id @default(auto()) @map("_id") @db.ObjectId
+  userId      String   @db.ObjectId
+  method      String
+  url         String
+  latency     Int?
+  statusCode  Int?
+  requestSize Int?
+  responseSize Int?
+  error       String?
+  createdAt   DateTime @default(now())
+
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
 }
