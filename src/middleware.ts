@@ -3,7 +3,7 @@ import createMiddleware from 'next-intl/middleware';
 import { routing } from '@/i18n/routing';
 import { NextRequest, NextResponse } from 'next/server';
 import { ROUTES } from './lib/routes';
-import { getLocalizedPath } from './lib/utils';
+import { getLocalizedPath, stripLocale } from './lib/utils';
 
 const intlMiddleware = createMiddleware(routing);
 
@@ -13,7 +13,7 @@ export async function middleware(req: NextRequest) {
   }
   const url = new URL(req.url);
   const pathname = url.pathname;
-
+  const pathWithoutLocale = stripLocale(pathname);
   // i18n
   const response = await intlMiddleware(req);
 
@@ -25,10 +25,12 @@ export async function middleware(req: NextRequest) {
   });
 
   const isPrivateRoute = [ROUTES.client, ROUTES.variables, ROUTES.history].some((path) =>
-    pathname.startsWith(path)
+    pathWithoutLocale.startsWith(path)
   );
 
-  const isAuthRoute = [ROUTES.signin, ROUTES.signup].some((path) => pathname.startsWith(path));
+  const isAuthRoute = [ROUTES.signin, ROUTES.signup].some((path) =>
+    pathWithoutLocale.startsWith(path)
+  );
 
   if (token && isAuthRoute) {
     return NextResponse.redirect(new URL(getLocalizedPath(pathname, ROUTES.main), req.url));
