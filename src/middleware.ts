@@ -20,11 +20,11 @@ export async function middleware(req: NextRequest) {
     req.nextUrl.pathname.endsWith(path)
   );
 
-  const isSignedIn = [ROUTES.signin, ROUTES.signup].some((path) =>
+  const isAuthRoute = [ROUTES.signin, ROUTES.signup].some((path) =>
     req.nextUrl.pathname.endsWith(path)
   );
 
-  if (token && isSignedIn) {
+  if (token && isAuthRoute) {
     return NextResponse.redirect(new URL(getLocalizedPath(pathname, ROUTES.main), req.url));
   }
 
