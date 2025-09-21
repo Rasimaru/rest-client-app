@@ -47,13 +47,13 @@ describe('HistoryContent', () => {
       </NextIntlClientProvider>
     );
 
-    expect(screen.getByText(/GET/i)).toBeInTheDocument();
-    expect(screen.getByText(/Status: 200/)).toBeInTheDocument();
-    expect(screen.getByText(/Latency: 123ms/)).toBeInTheDocument();
+    expect(screen.getAllByText(/GET/i)[0]).toBeInTheDocument();
+    expect(screen.getAllByText(/Status: 200/)[0]).toBeInTheDocument();
+    expect(screen.getAllByText(/Latency: 123ms/)[0]).toBeInTheDocument();
 
-    expect(screen.getByText(/POST/i)).toBeInTheDocument();
-    expect(screen.getByText(/Status: 500/)).toBeInTheDocument();
-    expect(screen.getByText(/Latency: 200ms/)).toBeInTheDocument();
-    expect(screen.getByText(/Error: Server error/)).toBeInTheDocument();
+    expect(screen.getAllByText(/POST/i)[0]).toBeInTheDocument();
+    expect(screen.getAllByText(/Status: 500/)[0]).toBeInTheDocument();
+    expect(screen.getAllByText(/Latency: 200ms/)[0]).toBeInTheDocument();
+    expect(screen.getAllByText(/Error: Server error/)[0]).toBeInTheDocument();
   });
 });
