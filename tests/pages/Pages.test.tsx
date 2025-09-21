@@ -2,7 +2,7 @@ jest.mock('@/styles/globals.css', () => ({}));
 
 import { render, screen } from '@testing-library/react';
 import { NextIntlClientProvider } from 'next-intl';
-import messages from '../messages/en.json';
+import messages from '../../messages/en.json';
 import { metadata } from '@/app/[locale]/layout';
 import SignInPage from '@/app/[locale]/(auth)/sign-in/page';
 import SignUpPage from '@/app/[locale]/(auth)/sign-up/page';
@@ -36,7 +36,7 @@ describe('Initial screen', () => {
     expect(screen.getByText('HeaderMock')).toBeInTheDocument();
     expect(screen.getByText('FooterMock')).toBeInTheDocument();
   });
-  
+
   it('metadata has title and description', () => {
     expect(metadata.title).toBeDefined();
     expect(metadata.description).toBeDefined();
