@@ -76,5 +76,20 @@
     "emailPlaceholder": "johndoe@mail.com",
     "password": "Password",
     "passwordPlaceholder": "********"
+  },
+  "ProjectInfo": {
+    "button": "About Project",
+    "close": "Close modal",
+    "title": "REST Client App 🌐⚡",
+    "description": "A lightweight Postman-like tool to make, manage, and track RESTful API requests with authentication, code generation, and history.",
+    "technologies": "Technologies",
+    "techList": "Next.js, React, TypeScript, TailwindCSS, Shadcn UI, NextAuth.js, Prisma, MongoDB",
+    "features": "Features",
+    "featuresList": "REST Client editor, Authentication, Request History, Variables, Internationalization, Generated Code",
+    "team": "Team",
+    "teamList": "Aleksey Drozdov - Mentor, Iuliia Barinova - Developer, Dzmitry Drevich - Developer, Andrey Tishchenko - Developer",
+    "course": "Course",
+    "courseYear": "RS School, 2025",
+    "repository": "Repository"
   }
 }

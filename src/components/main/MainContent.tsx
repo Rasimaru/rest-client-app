@@ -7,6 +7,7 @@ import { ROUTES } from '@/lib/routes';
 import { JSX } from 'react';
 import { useSession } from 'next-auth/react';
 import AuthButtons from '../shared/AuthButtons';
+import AboutModal from './AboutModal';
 
 const MainContent = (): JSX.Element => {
   const { data: session, status } = useSession();
@@ -47,6 +48,7 @@ const MainContent = (): JSX.Element => {
           </Button>
         </div>
       )}
+      <AboutModal />
     </div>
   );
 };

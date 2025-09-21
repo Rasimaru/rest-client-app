@@ -1,7 +1,11 @@
 import MainContent from '@/components/main/MainContent';
 
 const MainPage = () => {
-  return <MainContent />;
+  return (
+    <>
+      <MainContent />
+    </>
+  );
 };
 
 export default MainPage;
