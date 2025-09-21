@@ -12,7 +12,7 @@ const AuthButtons = () => {
   const t = useTranslations('button');
 
   return (
-    <div className="flex items-center gap-3">
+    <div className="flex items-center gap-3 text-primary">
       {!session ? (
         <>
           <Button variant="outline" size="sm" asChild>

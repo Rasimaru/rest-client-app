@@ -29,7 +29,7 @@ export default function LocaleSwitcher() {
   return (
     <DropdownMenu>
       <DropdownMenuTrigger asChild>
-        <Button variant="outline" size="sm" className="cursor-pointer">
+        <Button variant="outline" size="sm" className="cursor-pointer text-primary">
           {pathname.split('/')[1]?.toUpperCase() || 'EN'}
         </Button>
       </DropdownMenuTrigger>

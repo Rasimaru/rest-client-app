@@ -6,12 +6,30 @@ import { ROUTES } from '@/lib/routes';
 import LocaleSwitcher from './LocaleSwitcher';
 import { useTranslations } from 'next-intl';
 import AuthButtons from '../AuthButtons';
+import { useEffect, useState } from 'react';
 
 const Header = () => {
   const t = useTranslations('Header');
+  const [scrolled, setScrolled] = useState(false);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      setScrolled(window.scrollY > 0);
+    };
+
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
 
   return (
-    <header className="w-full sticky top-0 border-b border-gray-200 dark:border-gray-700 bg-gray-100 dark:bg-gray-900 text-primary">
+    <header
+      className={`w-full sticky z-50 top-0 border-b backdrop-contrast-0
+        ${
+          scrolled
+            ? 'bg-gradient-to-b from-neutral-900 dark:from-gray-900/90'
+            : 'border-gray-200 dark:border-gray-700 bg-gray-100 dark:bg-gray-900 text-primary'
+        }`}
+    >
       <nav className="container xl:w-7xl mx-auto flex flex-wrap p-2.5 items-center justify-between gap-4">
         <Link
           href={ROUTES.main}
