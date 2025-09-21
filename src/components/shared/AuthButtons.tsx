@@ -30,7 +30,7 @@ const AuthButtons = () => {
       ) : (
         <>
           <Button variant="outline" size="sm" asChild>
-            <Link href={ROUTES.main} aria-label={t('signInAriaLabel')}>
+            <Link href={ROUTES.main} aria-label={t('mainPageAriaLabel')}>
               {t('mainPage')}
             </Link>
           </Button>
@@ -39,7 +39,7 @@ const AuthButtons = () => {
             size="sm"
             onClick={() => signOut()}
             className="cursor-pointer"
-            aria-label={t('mainPageAriaLabel')}
+            aria-label={t('signOutAriaLabel')}
           >
             {t('signOut')}
           </Button>

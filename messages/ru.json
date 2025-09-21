@@ -68,6 +68,9 @@
   "language": {
     "label": "Язык"
   },
+  "status": {
+    "loading": "Идет загрузка..."
+  },
   "form": {
     "email": "Email",
     "emailPlaceholder": "johndoe@mail.com",
