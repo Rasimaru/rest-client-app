@@ -16,7 +16,10 @@ const customJestConfig: Config = {
     '!src/**/*.test.{ts,tsx}',
     '!src/**/*.spec.{ts,tsx}',
     '!src/main.tsx',
-    '!src/types/**'
+    '!src/types/**',
+    '!src/middleware.ts',
+    '!src/auth.ts',
+    '!src/app/api/auth/[...nextauth]/*'
   ],
   moduleNameMapper: {
     '^@/(.*)$': '<rootDir>/src/$1',

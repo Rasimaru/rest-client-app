@@ -4,12 +4,12 @@
     "linkAriaLabel": "Перейти на главную страницу"
   },
   "Footer": {
-    "githubLinkAriaLabel": "GitHub профиль",
+    "githubLinkAriaLabel": "Профиль GitHub",
     "schoolLinkAriaLabel": "RS Школа",
     "schoolImgAlt": "Логотип школы"
   },
   "MainContent": {
-    "title": "Добро пожаловать!",
+    "title": "Добро пожаловать",
     "buttonRestClient": "REST клиент",
     "buttonRestClientAriaLabel": "Перейти на страницу REST клиента",
     "buttonHistory": "История",
@@ -21,10 +21,23 @@
     "title": "История"
   },
   "SignInPage": {
-    "title": "Войти"
+    "title": "С возвращением",
+    "description": "Давайте начнём. Войдите в свой аккаунт с помощью Email и Пароля.",
+    "forgotPassword": "Забыли пароль?",
+    "submit": "Войти",
+    "github": "Войти через GitHub",
+    "haveAccount": "Нет аккаунта? ",
+    "signUpLink": "Зарегистрироваться",
+    "continue": "Или продолжите с помощью"
   },
   "SignUpPage": {
-    "title": "Регистрация"
+    "title": "Создайте аккаунт",
+    "description": "Давайте начнём. Заполните данные ниже, чтобы создать аккаунт.",
+    "submit": "Зарегистрироваться",
+    "github": "Зарегистрироваться через GitHub",
+    "haveAccount": "Уже есть аккаунт? ",
+    "signInLink": "Войти",
+    "continue": "Или продолжите с помощью"
   },
   "RestClientPage": {
     "title": "REST клиент"
@@ -43,12 +56,40 @@
     "goHome": "Перейти на главную"
   },
   "button": {
+    "mainPage": "Главная",
+    "mainPageAriaLabel": "Перейти на главную страницу",
     "signIn": "Войти",
     "signInAriaLabel": "Перейти на страницу входа",
-    "signUp": "Регистрация",
-    "signUpAriaLabel": "Перейти на страницу регистрации"
+    "signUp": "Зарегистрироваться",
+    "signUpAriaLabel": "Перейти на страницу регистрации",
+    "signOut": "Выйти",
+    "signOutAriaLabel": "Выйти из аккаунта"
   },
   "language": {
     "label": "Язык"
+  },
+  "status": {
+    "loading": "Идет загрузка..."
+  },
+  "form": {
+    "email": "Email",
+    "emailPlaceholder": "johndoe@mail.com",
+    "password": "Пароль",
+    "passwordPlaceholder": "********"
+  },
+  "ProjectInfo": {
+    "button": "О проекте",
+    "close": "Закрыть",
+    "title": "REST Client App 🌐⚡",
+    "description": "Легковесный инструмент, похожий на Postman, для создания, управления и отслеживания RESTful API-запросов с аутентификацией, генерацией кода и историей запросов.",
+    "technologies": "Технологии",
+    "techList": "Next.js, React, TypeScript, TailwindCSS, Shadcn UI, NextAuth.js, Prisma, MongoDB",
+    "features": "Функции",
+    "featuresList": "Редактор REST-запросов, Аутентификация, История запросов, Переменные, Интернационализация, Генерация кода",
+    "team": "Команда",
+    "teamList": "Aleksey Drozdov - Ментор, Iuliia Barinova - Разработчик, Dzmitry Drevich - Разработчик, Andrey Tishchenko - Разработчик",
+    "course": "Курс",
+    "courseYear": "RS School, 2025",
+    "repository": "Репозиторий"
   }
 }

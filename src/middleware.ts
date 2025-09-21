@@ -1,11 +1,40 @@
+import { getToken } from 'next-auth/jwt';
 import createMiddleware from 'next-intl/middleware';
 import { routing } from '@/i18n/routing';
+import { NextRequest, NextResponse } from 'next/server';
+import { ROUTES } from './lib/routes';
+import { getLocalizedPath } from './lib/utils';
 
-export default createMiddleware(routing);
+const intlMiddleware = createMiddleware(routing);
+
+export async function middleware(req: NextRequest) {
+  const url = new URL(req.url);
+  // i18n
+  const response = intlMiddleware(req);
+  const pathname = url.pathname;
+
+  // Auth
+  const token = await getToken({ req, secret: process.env.AUTH_SECRET });
+
+  const isPrivateRoute = [ROUTES.client, ROUTES.variables, ROUTES.history].some((path) =>
+    req.nextUrl.pathname.endsWith(path)
+  );
+
+  const isAuthRoute = [ROUTES.signin, ROUTES.signup].some((path) =>
+    req.nextUrl.pathname.endsWith(path)
+  );
+
+  if (token && isAuthRoute) {
+    return NextResponse.redirect(new URL(getLocalizedPath(pathname, ROUTES.main), req.url));
+  }
+
+  if (!token && isPrivateRoute) {
+    return NextResponse.redirect(new URL(getLocalizedPath(pathname, ROUTES.signin), req.url));
+  }
+
+  return response;
+}
 
 export const config = {
-  // Match all pathnames except for
-  // - … if they start with `/api`, `/trpc`, `/_next` or `/_vercel`
-  // - … the ones containing a dot (e.g. `favicon.ico`)
   matcher: '/((?!api|trpc|_next|_vercel|.*\\..*).*)'
 };

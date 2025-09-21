@@ -13,5 +13,6 @@ export const AuthSchema = Yup.object({
     .matches(/[a-z]/, 'Must contain at least one lowercase letter')
     .matches(/[A-Z]/, 'Must contain at least one uppercase letter')
     .matches(/\d/, 'Must contain at least one digit')
+    .matches(/[@$!%*?&]/, 'Must contain at least one special character')
     .required('Password is required')
 });
