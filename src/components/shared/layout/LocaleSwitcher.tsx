@@ -20,18 +20,26 @@ export default function LocaleSwitcher() {
     const newPath = segments.join('/');
 
     router.push(newPath);
+
+    //TODO: replace with better sollution
+    // temporary sollution,
+    router.refresh();
   };
 
   return (
     <DropdownMenu>
       <DropdownMenuTrigger asChild>
-        <Button variant="outline" size="sm">
-          EN/RU
+        <Button variant="outline" size="sm" className="cursor-pointer text-primary">
+          {pathname.split('/')[1]?.toUpperCase() || 'EN'}
         </Button>
       </DropdownMenuTrigger>
-      <DropdownMenuContent>
+      <DropdownMenuContent className="min-w-10 max-w-full">
         {LOCALES.map((loc) => (
-          <DropdownMenuItem key={loc} onClick={() => switchLocale(loc)}>
+          <DropdownMenuItem
+            key={loc}
+            className="cursor-pointer hover:bg-gray-200"
+            onClick={() => switchLocale(loc)}
+          >
             {loc.toUpperCase()}
           </DropdownMenuItem>
         ))}

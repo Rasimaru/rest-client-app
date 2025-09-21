@@ -1,6 +1,6 @@
 import { fireEvent, render, screen } from '@testing-library/react';
 import { NextIntlClientProvider } from 'next-intl';
-import messages from '../messages/en.json';
+import messages from '../../messages/en.json';
 import VariablesPage from '@/app/[locale]/variables/VariablesPage';
 
 jest.mock('next/navigation', () => ({

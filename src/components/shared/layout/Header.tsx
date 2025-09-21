@@ -1,20 +1,36 @@
 'use client';
 
 import Link from 'next/link';
-import { Button } from '@/components/ui/button';
 import { Server } from 'lucide-react';
 import { ROUTES } from '@/lib/routes';
-import { JSX } from 'react';
 import LocaleSwitcher from './LocaleSwitcher';
 import { useTranslations } from 'next-intl';
+import AuthButtons from '../AuthButtons';
+import { useEffect, useState } from 'react';
 
-const Header = (): JSX.Element => {
+const Header = () => {
   const t = useTranslations('Header');
-  const buttonLabels = useTranslations('button');
+  const [scrolled, setScrolled] = useState(false);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      setScrolled(window.scrollY > 0);
+    };
+
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
 
   return (
-    <header className="w-full border-b border-gray-200 dark:border-gray-700 bg-gray-300 dark:bg-gray-900 text-primary">
-      <nav className="container mx-auto flex flex-wrap py-3 items-center justify-between gap-4">
+    <header
+      className={`w-full sticky z-50 top-0 border-b backdrop-contrast-0
+        ${
+          scrolled
+            ? 'bg-gradient-to-b from-neutral-900 dark:from-gray-900/90'
+            : 'border-gray-200 dark:border-gray-700 bg-gray-100 dark:bg-gray-900 text-primary'
+        }`}
+    >
+      <nav className="container xl:w-7xl mx-auto flex flex-wrap p-2.5 items-center justify-between gap-4">
         <Link
           href={ROUTES.main}
           aria-label={t('linkAriaLabel')}
@@ -23,18 +39,9 @@ const Header = (): JSX.Element => {
           <Server size={32} />
           <h1>{t('title')}</h1>
         </Link>
-        <LocaleSwitcher />
-        <div className="flex items-center gap-4">
-          <Button variant="secondary" size="sm" asChild>
-            <Link href={ROUTES.signin} aria-label={buttonLabels('signInAriaLabel')}>
-              {buttonLabels('signIn')}
-            </Link>
-          </Button>
-          <Button size="sm" asChild>
-            <Link href={ROUTES.signup} aria-label={buttonLabels('signUpAriaLabel')}>
-              {buttonLabels('signUp')}
-            </Link>
-          </Button>
+        <div className="flex sm:gap-5 gap-2">
+          <LocaleSwitcher />
+          <AuthButtons />
         </div>
       </nav>
     </header>
