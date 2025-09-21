@@ -18,7 +18,11 @@ export async function middleware(req: NextRequest) {
   const response = await intlMiddleware(req);
 
   // Auth
-  const token = await getToken({ req, secret: process.env.AUTH_SECRET });
+  const token = await getToken({
+    req,
+    secret: process.env.AUTH_SECRET,
+    cookieName: '__Secure-next-auth.session-token'
+  });
 
   const isPrivateRoute = [ROUTES.client, ROUTES.variables, ROUTES.history].some((path) =>
     pathname.startsWith(path)
