@@ -91,5 +91,16 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
     async session({ session }) {
       console.log('[NextAuth] Session:', session);
     }
+  },
+  cookies: {
+    sessionToken: {
+      name: `__Secure-next-auth.session-token`,
+      options: {
+        httpOnly: true,
+        sameSite: 'lax',
+        path: '/',
+        secure: true
+      }
+    }
   }
 });

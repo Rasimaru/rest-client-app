@@ -9,20 +9,19 @@ const intlMiddleware = createMiddleware(routing);
 
 export async function middleware(req: NextRequest) {
   const url = new URL(req.url);
-  // i18n
-  const response = intlMiddleware(req);
   const pathname = url.pathname;
+
+  // i18n
+  const response = await intlMiddleware(req);
 
   // Auth
   const token = await getToken({ req, secret: process.env.AUTH_SECRET });
 
   const isPrivateRoute = [ROUTES.client, ROUTES.variables, ROUTES.history].some((path) =>
-    req.nextUrl.pathname.endsWith(path)
+    pathname.startsWith(path)
   );
 
-  const isAuthRoute = [ROUTES.signin, ROUTES.signup].some((path) =>
-    req.nextUrl.pathname.endsWith(path)
-  );
+  const isAuthRoute = [ROUTES.signin, ROUTES.signup].some((path) => pathname.startsWith(path));
 
   if (token && isAuthRoute) {
     return NextResponse.redirect(new URL(getLocalizedPath(pathname, ROUTES.main), req.url));
