@@ -5,6 +5,7 @@ import { Button } from '../ui/button';
 import GithubIcon from '../shared/icons/Github';
 import Link from 'next/link';
 import { useTranslations } from 'next-intl';
+import { FOOTER_LINKS } from '@/lib/constants';
 
 const AboutModal = () => {
   const [open, setOpen] = useState(false);
@@ -69,11 +70,7 @@ const AboutModal = () => {
               <strong>{t('course')}:</strong> {t('courseYear')}
             </p>
             <Button variant="outline" asChild>
-              <Link
-                href="https://github.com/Rasimaru/rest-client-app"
-                target="_blank"
-                className="flex items-center gap-2"
-              >
+              <Link href={FOOTER_LINKS.github} target="_blank" className="flex items-center gap-2">
                 <GithubIcon /> {t('repository')}
               </Link>
             </Button>
