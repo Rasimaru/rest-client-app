@@ -3,25 +3,33 @@ import createMiddleware from 'next-intl/middleware';
 import { routing } from '@/i18n/routing';
 import { NextRequest, NextResponse } from 'next/server';
 import { ROUTES } from './lib/routes';
-import { getLocalizedPath } from './lib/utils';
+import { getLocalizedPath, stripLocale } from './lib/utils';
 
 const intlMiddleware = createMiddleware(routing);
 
 export async function middleware(req: NextRequest) {
+  if (req.method === 'OPTIONS') {
+    return NextResponse.next();
+  }
   const url = new URL(req.url);
-  // i18n
-  const response = intlMiddleware(req);
   const pathname = url.pathname;
+  const pathWithoutLocale = stripLocale(pathname);
+  // i18n
+  const response = await intlMiddleware(req);
 
   // Auth
-  const token = await getToken({ req, secret: process.env.AUTH_SECRET });
+  const token = await getToken({
+    req,
+    secret: process.env.AUTH_SECRET,
+    cookieName: '__Secure-next-auth.session-token'
+  });
 
   const isPrivateRoute = [ROUTES.client, ROUTES.variables, ROUTES.history].some((path) =>
-    req.nextUrl.pathname.endsWith(path)
+    pathWithoutLocale.startsWith(path)
   );
 
   const isAuthRoute = [ROUTES.signin, ROUTES.signup].some((path) =>
-    req.nextUrl.pathname.endsWith(path)
+    pathWithoutLocale.startsWith(path)
   );
 
   if (token && isAuthRoute) {

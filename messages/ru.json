@@ -17,8 +17,12 @@
     "buttonVariables": "Переменные",
     "buttonVariablesAriaLabel": "Перейти на страницу переменных"
   },
-  "History": {
-    "title": "История"
+  "HistoryPage": {
+    "title": "История запросов",
+    "emptyTitle": "Вы ещё не выполняли запросы",
+    "description": "Здесь пока пусто. Попробуйте:",
+    "buttonRestClient": "REST-клиент",
+    "buttonRestClientAriaLabel": "Перейти на страницу REST-клиента"
   },
   "SignInPage": {
     "title": "С возвращением",

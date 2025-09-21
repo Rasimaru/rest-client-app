@@ -12,3 +12,9 @@ export function getLocalizedPath(pathname: string, route: string): string {
 
   return `/${locale}${route.startsWith('/') ? route : `/${route}`}`;
 }
+
+export function stripLocale(pathname: string) {
+  const locale = routing.locales.find((l) => pathname.startsWith(`/${l}/`));
+  if (!locale) return pathname;
+  return pathname.replace(`/${locale}`, '');
+}

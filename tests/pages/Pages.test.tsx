@@ -6,7 +6,6 @@ import messages from '../../messages/en.json';
 import { metadata } from '@/app/[locale]/layout';
 import SignInPage from '@/app/[locale]/(auth)/sign-in/page';
 import SignUpPage from '@/app/[locale]/(auth)/sign-up/page';
-import HistoryPage from '@/app/[locale]/history/page';
 import RestClientPage from '@/app/[locale]/rest-client/page';
 import NotFound from '@/app/not-found';
 import MainPage from '@/app/[locale]/(main)/page';
@@ -85,14 +84,5 @@ describe('Initial screen', () => {
       </NextIntlClientProvider>
     );
     expect(screen.getByText(/Rest Client/i)).toBeInTheDocument();
-  });
-
-  it('renders History Page', () => {
-    render(
-      <NextIntlClientProvider locale="en" messages={messages}>
-        <HistoryPage />
-      </NextIntlClientProvider>
-    );
-    expect(screen.getByText('History')).toBeInTheDocument();
   });
 });

@@ -12,7 +12,12 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
   providers: [
     GitHub({
       clientId: process.env.AUTH_GITHUB_ID as string,
-      clientSecret: process.env.AUTH_GITHUB_SECRET as string
+      clientSecret: process.env.AUTH_GITHUB_SECRET as string,
+      authorization: {
+        params: {
+          redirect_uri: process.env.NEXTAUTH_URL + '/api/auth/callback/github'
+        }
+      }
     }),
     Credentials({
       name: 'Credentials',
@@ -83,13 +88,24 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
   },
   events: {
     async createUser({ user }) {
-      console.log('✅ [NextAuth] User created:', user);
+      console.log('[NextAuth] User created:', user);
     },
     async signIn({ user, account, profile }) {
-      console.log('🔑 [NextAuth] Sign in:', { user, account, profile });
+      console.log('[NextAuth] Sign in:', { user, account, profile });
     },
     async session({ session }) {
-      console.log('💾 [NextAuth] Session:', session);
+      console.log('[NextAuth] Session:', session);
+    }
+  },
+  cookies: {
+    sessionToken: {
+      name: `__Secure-next-auth.session-token`,
+      options: {
+        httpOnly: true,
+        sameSite: 'lax',
+        path: '/',
+        secure: process.env.NODE_ENV === 'production'
+      }
     }
   }
 });
