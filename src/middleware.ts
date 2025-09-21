@@ -8,6 +8,9 @@ import { getLocalizedPath } from './lib/utils';
 const intlMiddleware = createMiddleware(routing);
 
 export async function middleware(req: NextRequest) {
+  if (req.method === 'OPTIONS') {
+    return NextResponse.next();
+  }
   const url = new URL(req.url);
   const pathname = url.pathname;
 

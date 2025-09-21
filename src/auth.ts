@@ -12,7 +12,12 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
   providers: [
     GitHub({
       clientId: process.env.AUTH_GITHUB_ID as string,
-      clientSecret: process.env.AUTH_GITHUB_SECRET as string
+      clientSecret: process.env.AUTH_GITHUB_SECRET as string,
+      authorization: {
+        params: {
+          redirect_uri: process.env.NEXTAUTH_URL + '/api/auth/callback/github'
+        }
+      }
     }),
     Credentials({
       name: 'Credentials',
