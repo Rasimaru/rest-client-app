@@ -1,0 +1,99 @@
+{
+  "Header": {
+    "title": "REST Client App",
+    "linkAriaLabel": "Go to main page"
+  },
+  "Footer": {
+    "githubLinkAriaLabel": "GitHub profile",
+    "schoolLinkAriaLabel": "RS School",
+    "schoolImgAlt": "School logo"
+  },
+  "MainContent": {
+    "title": "Welcome",
+    "buttonRestClient": "Rest Client",
+    "buttonRestClientAriaLabel": "Go to rest-client page",
+    "buttonHistory": "History",
+    "buttonHistoryAriaLabel": "Go to history page",
+    "buttonVariables": "Variables",
+    "buttonVariablesAriaLabel": "Go to variables page"
+  },
+  "HistoryPage": {
+    "title": "History Requests",
+    "emptyTitle": "You haven't executed any requests yet",
+    "description": "It's empty here. Try:",
+    "buttonRestClient": "Rest Client",
+    "buttonRestClientAriaLabel": "Go to rest-client page"
+  },
+  "SignInPage": {
+    "title": "Welcome back",
+    "description": "Let's get started. Sign In into your account with Email and Password.",
+    "forgotPassword": "Forgot your password?",
+    "submit": "Sign In",
+    "github": "Sign In with GitHub",
+    "haveAccount": "Don't have an account? ",
+    "signUpLink": "Sign Up",
+    "continue": "Or continue with"
+  },
+  "SignUpPage": {
+    "title": "Create an account",
+    "description": "Let's get started. Fill in the details below to create your account.",
+    "submit": "Sign Up",
+    "github": "Sign Up with GitHub",
+    "haveAccount": "Already have an account? ",
+    "signInLink": "Sign In",
+    "continue": "Or continue with"
+  },
+  "RestClientPage": {
+    "title": "REST Client"
+  },
+  "VariablesPage": {
+    "title": "Manage Variables",
+    "inputNamePlaceholder": "Variable name",
+    "inputValuePlaceholder": "Value",
+    "addButton": "Add",
+    "noVariablesMessage": "No variables yet",
+    "removeButton": "Remove"
+  },
+  "NotFound": {
+    "title": "This page could not be found.",
+    "message": "Sorry, we couldn’t find the page you were looking for.",
+    "goHome": "Go to Home"
+  },
+  "button": {
+    "mainPage": "Main",
+    "mainPageAriaLabel": "Go to main page",
+    "signIn": "Sign In",
+    "signInAriaLabel": "Go to sign-in page",
+    "signUp": "Sign Up",
+    "signUpAriaLabel": "Go to sign-up page",
+    "signOut": "Sign Out",
+    "signOutAriaLabel": "Sign Out from your account"
+  },
+  "language": {
+    "label": "Language"
+  },
+  "status": {
+    "loading": "Loading..."
+  },
+  "form": {
+    "email": "Email",
+    "emailPlaceholder": "johndoe@mail.com",
+    "password": "Password",
+    "passwordPlaceholder": "********"
+  },
+  "ProjectInfo": {
+    "button": "About Project",
+    "close": "Close modal",
+    "title": "REST Client App 🌐⚡",
+    "description": "A lightweight Postman-like tool to make, manage, and track RESTful API requests with authentication, code generation, and history.",
+    "technologies": "Technologies",
+    "techList": "Next.js, React, TypeScript, TailwindCSS, Shadcn UI, NextAuth.js, Prisma, MongoDB",
+    "features": "Features",
+    "featuresList": "REST Client editor, Authentication, Request History, Variables, Internationalization, Generated Code",
+    "team": "Team",
+    "teamList": "Aleksey Drozdov - Mentor, Iuliia Barinova - Developer, Dzmitry Drevich - Developer, Andrey Tishchenko - Developer",
+    "course": "Course",
+    "courseYear": "RS School, 2025",
+    "repository": "Repository"
+  }
+}
