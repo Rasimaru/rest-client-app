@@ -57,6 +57,7 @@ npm install
 Start the development server:
 
 ```bash
+npx prisma generate
 npm run dev
 ```
 
